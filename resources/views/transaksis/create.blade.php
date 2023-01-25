@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Barang:</strong>
-                    <select name="nama_barang" id="" class="form-control">
+                    <select name="nama_barang" id="nama_barang" class="form-control">
                         <option value="">Nama Barang</option>
                         @foreach ($nama_barang as $id)
                             <option value="{{ $id->nama_barang }}"> {{ $id->nama_barang }} | stok : {{ $id->stok }} |</option>

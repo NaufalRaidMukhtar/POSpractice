@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-floating">
                         <input type="email" class="form-control " name="email" id="email" required
-                            value="{{ old('email') }}" placeholder="name@example.com">
+                            value="{{ old('email') }}" placeholder="name@gmail.com">
                         <label for="email">Email address</label>
                     </div>
                     <div class="form-floating">
@@ -39,8 +39,8 @@
                     <button class="w-100 btn btn-lg btn-danger mt-3" type="submit" href="/login">Register</button>
                 </form>
                 <!-- <small class="d-block mt-3">Have an account? <a class="text-danger" href="/login"> Login
-                        Here</a></small>
-            </main> -->
+                        Here</a></small>-->
+            </main> 
         </div>
     </div>
  

@@ -33,7 +33,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $transaksi->nama_barang }}</td>
                 <td>{{ $transaksi->harga_barang }}</td>
-                <td>{{ $transaksi->total_barang }}</td>
+                <td>{{ $transaksi->stok }}</td>
                 <td>{{ $transaksi->total_harga }}</td>
                 <td>{{ $transaksi->total_bayar }}</td>
                 <td>{{ $transaksi->kembalian }}</td>

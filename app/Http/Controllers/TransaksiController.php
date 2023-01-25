@@ -44,55 +44,55 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
     // {
-    //             $find_barang = barang::where('nama_barang', $request->nama_barang)->first();
-    //             $total_harga = $request->total_barang  * $find_barang->harga_barang;
-    //             if ($request->total_barang <= $find_barang->stok) {
-    //                 if ($request->total_bayar < $total_harga) {
-    //                     return redirect()->back()->with('error', 'Uang tidak cukup!');
-    //                 }else{
-    //                     Transaksi::create([
-    //                         'nama_barang' => $request ->nama_barang,
-    //                         'harga_barang' => $find_barang ->harga_barang,
-    //                         'total_barang' => $request ->total_barang,
-    //                         'total_harga' => $request ->total_barang  * $find_barang->harga_barang, 
-    //                         'total_bayar' => $request ->total_bayar,
-    //                         'kembalian' => $request ->total_bayar  - $request ->total_barang  * $find_barang ->harga_barang, 
-    //                         'tanggal_beli' => Carbon::now(),
+                $find_barang = barang::where('nama_barang', $request->nama_barang)->first();
+                $total_harga = $request->stok  * $find_barang->harga_barang;
+                if ($request->stok <= $find_barang->stok) {
+                    if ($request->total_bayar < $total_harga) {
+                        return redirect()->back()->with('error', 'Uang tidak cukup!');
+                    }else{
+                        Transaksi::create([
+                            'nama_barang' => $request ->nama_barang,
+                            'harga_barang' => $find_barang ->harga_barang,
+                            'stok' => $request ->stok,
+                            'total_harga' => $request ->stok  * $find_barang->harga_barang, 
+                            'total_bayar' => $request ->total_bayar,
+                            'kembalian' => $request ->total_bayar  - $request ->stok  * $find_barang ->harga_barang, 
+                            'tanggal_beli' => Carbon::now(),
                             
-    //                     ]);
-    //                     DB::table('barangs')->where('nama_barang', $find_barang->nama_barang)->update(['stok' => $find_barang->stok - $request->total_barang]);
-    //                 }
-    //             }else{
-    //                 return redirect()->back()->with('error', 'stok tidak memadai!');
-    //             }
+                        ]);
+                        DB::table('barangs')->where('nama_barang', $find_barang->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
+                    }
+                }else{
+                    return redirect()->back()->with('error', 'stok tidak memadai!');
+                }
 
-    //         return redirect()->route('transaksis.index')
+            return redirect()->route('transaksis.index')
             
-    //         ->with('success','Transaksi Berhasil Ditambahkan.');
-    // }
-
-    $find_barang = Barang::where('nama_barang', $request->nama_barang)->first();
-    if ($request->stok <= $find_barang->stok) {
-        if ($find_barang->harga_barang <= $request->total_bayar) {
-            $cek = Transaksi::create([
-                'nama_barang' => $request->nama_barang ,
-                'harga_barang' => $find_barang->harga_barang ,
-                'stok' => $request->stok,
-                'total_harga' => $request->stok * $find_barang->harga_barang,
-                'total_bayar' => $request->total_bayar,
-                'kembalian' => $request->total_bayar - $request->stok * $find_barang->harga_barang,
-                'tanggal_beli' => Carbon::now() ,
-            ]);
-            DB::table('barangs')->where('nama_barang', $request->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
-        }else{
-            return redirect()->back()->with('error', 'Uang tidak cukup untuk membeli! ');
-        }
-    }else{
-        return redirect()->back()->with('error', 'stok tidak cukup !');
+            ->with('success','Transaksi Berhasil Ditambahkan.');
     }
-    return redirect()->route('transaksis.index')
-    ->with('success','transaksi created successfully.');
-}
+
+//     $find_barang = Barang::where('nama_barang', $request->nama_barang)->first();
+//     if ($request->stok <= $find_barang->stok) {
+//         if ($find_barang->harga_barang <= $request->total_bayar) {
+//             $cek = Transaksi::create([
+//                 'nama_barang' => $request->nama_barang ,
+//                 'harga_barang' => $find_barang->harga_barang ,
+//                 'stok' => $request->stok,
+//                 'total_harga' => $request->stok * $find_barang->harga_barang,
+//                 'total_bayar' => $request->total_bayar,
+//                 'kembalian' => $request->total_bayar - $request->stok * $find_barang->harga_barang,
+//                 'tanggal_beli' => Carbon::now() ,
+//             ]);
+//             DB::table('barangs')->where('nama_barang', $request->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
+//         }else{
+//             return redirect()->back()->with('error', 'Uang tidak cukup untuk membeli! ');
+//         }
+//     }else{
+//         return redirect()->back()->with('error', 'stok tidak cukup !');
+//     }
+//     return redirect()->route('transaksis.index')
+//     ->with('success','transaksi created successfully.');
+// }
 
 
     /**
@@ -129,54 +129,54 @@ class TransaksiController extends Controller
     public function update(Request $request, Transaksi $transaksi)
     {
         
-    //     $find_barang = barang::where('nama_barang', $request->nama_barang)->first();
-    //     $total_harga = $request->total_barang  * $find_barang->harga_barang;
-    //     if ($request->total_barang <= $find_barang->stok) {
-    //         if ($request->total_bayar < $total_harga) {
-    //             return redirect()->back()->with('error', 'Uang tidak cukup!');
-    //         }else{
-    //             Transaksi::create([
-    //                 'nama_barang' => $request ->nama_barang,
-    //                 'harga_barang' => $find_barang ->harga_barang,
-    //                 'total_barang' => $request ->total_barang,
-    //                 'total_harga' => $request ->total_barang  * $find_barang->harga_barang, 
-    //                 'total_bayar' => $request ->total_bayar,
-    //                 'kembalian' => $request ->total_bayar  - $request ->total_barang  * $find_barang ->harga_barang, 
-    //                 'tanggal_beli' => Carbon::now(),
-                    
-    //             ]);
-    //             DB::table('barangs')->where('nama_barang', $find_barang->nama_barang)->update(['stok' => $find_barang->stok - $request->total_barang]);
-    //         }
-    //     }else{
-    //         return redirect()->back()->with('error', 'stok tidak memadai!');
-    //     }
-    //         return redirect()->route('transaksis.index')
-            
-    //         ->with('success','Transaksi updated successfully');
-    // }
-
-    $find_barang = Barang::where('nama_barang', $request->nama_barang)->first();
+        $find_barang = barang::where('nama_barang', $request->nama_barang)->first();
+        $total_harga = $request->stok  * $find_barang->harga_barang;
         if ($request->stok <= $find_barang->stok) {
-            if ($find_barang->harga_barang <= $request->total_bayar) {
-                $cek = Transaksi::create([
-                    'nama_barang' => $request->nama_barang ,
-                    'harga_barang' => $find_barang->harga_barang ,
-                    'stok' => $request->stok,
-                    'total_harga' => $request->stok * $find_barang->harga_barang,
-                    'total_bayar' => $request->total_bayar,
-                    'kembalian' => $request->total_bayar - $request->stok * $find_barang->harga_barang,
-                    'tanggal_beli' => Carbon::now() ,
-                ]);
-                DB::table('barangs')->where('nama_barang', $request->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
+            if ($request->total_bayar < $total_harga) {
+                return redirect()->back()->with('error', 'Uang tidak cukup!');
             }else{
-                return redirect()->back()->with('error', 'Uang tidak cukup untuk membeli');
+                Transaksi::create([
+                    'nama_barang' => $request ->nama_barang,
+                    'harga_barang' => $find_barang ->harga_barang,
+                    'stok' => $request ->stok,
+                    'total_harga' => $request ->stok  * $find_barang->harga_barang, 
+                    'total_bayar' => $request ->total_bayar,
+                    'kembalian' => $request ->total_bayar  - $request ->stok  * $find_barang ->harga_barang, 
+                    'tanggal_beli' => Carbon::now(),
+                    
+                ]);
+                DB::table('barangs')->where('nama_barang', $find_barang->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
             }
         }else{
-            return redirect()->back()->with('error', 'stok tidak cukup');
+            return redirect()->back()->with('error', 'stok tidak memadai!');
         }
-        return redirect()->route('transaksis.index')
-        ->with('success','transaksi created successfully.');
+            return redirect()->route('transaksis.index')
+            
+            ->with('success','Transaksi updated successfully');
     }
+
+    // $find_barang = Barang::where('nama_barang', $request->nama_barang)->first();
+    //     if ($request->stok <= $find_barang->stok) {
+    //         if ($find_barang->harga_barang <= $request->total_bayar) {
+    //             $cek = Transaksi::create([
+    //                 'nama_barang' => $request->nama_barang ,
+    //                 'harga_barang' => $find_barang->harga_barang ,
+    //                 'stok' => $request->stok,
+    //                 'total_harga' => $request->stok * $find_barang->harga_barang,
+    //                 'total_bayar' => $request->total_bayar,
+    //                 'kembalian' => $request->total_bayar - $request->stok * $find_barang->harga_barang,
+    //                 'tanggal_beli' => Carbon::now() ,
+    //             ]);
+    //             DB::table('barangs')->where('nama_barang', $request->nama_barang)->update(['stok' => $find_barang->stok - $request->stok]);
+    //         }else{
+    //             return redirect()->back()->with('error', 'Uang tidak cukup untuk membeli');
+    //         }
+    //     }else{
+    //         return redirect()->back()->with('error', 'stok tidak cukup');
+    //     }
+    //     return redirect()->route('transaksis.index')
+    //     ->with('success','transaksi created successfully.');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -190,10 +190,10 @@ class TransaksiController extends Controller
         $find_barang = barang::where('nama_barang', $cek->nama_barang)->first();
         // dd($find_barang->stok);
         if ($cek) {
-            DB::table('barangs')->where('nama_barang', $cek->nama_barang)->update(['stok' => $find_barang->stok + $cek->total_barang]);
+            DB::table('barangs')->where('nama_barang', $cek->nama_barang)->update(['stok' => $find_barang->stok + $cek->stok]);
             $transaksi->delete();
         }
-        // dd($cek->total_barang);
+        // dd($cek->stok);
         return redirect()->route('transaksis.index')
         ->with('success','Transaksi deleted successfully');
     }
