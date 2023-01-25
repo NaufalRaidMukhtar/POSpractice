@@ -31,8 +31,13 @@ use App\Http\Controllers\LoginController;
 //ini adalah Controller register
 use App\Http\Controllers\RegisterController;
 
+use App\Http\Controllers\HomeController;
+
 use App\Models\Datasiswa;
+Use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +104,8 @@ Route::resource('barangs', BarangController::class);
 
 // ini adalah route menuju halaman transaksi
 Route::resource('transaksis', TransaksiController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
