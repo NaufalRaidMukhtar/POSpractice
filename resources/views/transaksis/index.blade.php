@@ -41,7 +41,7 @@
                 <td>
                     <form action="{{ route('transaksis.destroy', $transaksi->id) }}" method="POST">
                         <a class="btn btn-info" href="{{ route('transaksis.show', $transaksi->id) }}">Show</a>
-                        <!-- <a class="btn btn-primary" href="{{ route('transaksis.edit', $transaksi->id) }}">Edit</a> -->
+                        <a class="btn btn-primary" href="{{ route('transaksis.edit', $transaksi->id) }}">Edit</a>   
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"

@@ -27,14 +27,22 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Barang:</strong>
-                    <select class="form-control" name="nama_barang">
-                        <option value="{{ $transaksi->nama_barang }}">Nama Barang</option>
+                    <select name="nama_barang" id="nama_barang" class="form-control">
+                        <option value="">Nama Barang</option>
                         @foreach ($nama_barang as $id)
-                            <option value="{{ $id->nama_barang }}">{{ $id->nama_barang }} stok {{ $id->stok }}</option>
+                            <option value="{{ $id->nama_barang }}"> {{ $id->nama_barang }} | stok : {{ $id->stok }} |</option>
                         @endforeach
                     </select>
                 </div>
             </div>
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                 <div class="form-group">
+                         <strong>Harga Barang:</strong>
+                         <div id="harga">
+                            <input type="number" disabled id="harga_barang" name="harga_barang" class="form-control" placeholder="Total Harga">
+                         </div>
+                </div>  
+            </div> 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Total Barang:</strong>
