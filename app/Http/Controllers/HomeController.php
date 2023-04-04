@@ -26,6 +26,10 @@ class HomeController extends Controller
         return view('home');
     }
     
+    // public function transaksis()
+    // {
+    //     return view('transaksis');
+    // } 
     public function adminHome()
     {
         return view('adminHome');

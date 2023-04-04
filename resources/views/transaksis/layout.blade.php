@@ -12,12 +12,13 @@
             <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>  -->
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <a class="navbar-brand" href="admin">WikraMart</a>
+        <a class="navbar-brand" href="home">WikraMart</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,15 +30,16 @@
                     <a class="btn btn-info" href="barangs">Barang<span class="barang"></a>
                     <a class="btn btn-info" href="transaksis">Transaksi<span class="transaksi"></a>
             </ul>
+            {{-- <ul class = "navbar-nav ms-auto">
+                <li calss="navbar-item">
+                   <a href="login" class="nav-link"> <i class="bi bi-box-arrow-in-right"></i>
+                   login</a>
+                </li>
+            </ul> --}}
         </div>
-        <form action="/register" method="POST">
-            @csrf
-            <button class="btn btn-info">register</button>
-            
-        </form>
         <form action="/logout" method="POST">
             @csrf
-            <button class="btn btn-info" onclick="return confirm ('Apakah Yakin Ingin logout ?')">Logout</button>
+            <button class="btn btn-info"  onclick="return confirm ('Apakah Yakin Ingin logout ?')"> <i class="bi bi-box-arrow-right"></i></button>
             
         </form>
     </nav>

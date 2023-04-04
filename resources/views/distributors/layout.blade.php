@@ -48,9 +48,6 @@
                 </li>
             </ul>
         </div>
-
-        <a class="btn btn-info" href="/register">Register<span class="register"></a>
-
         <form action="/logout" method="POST">
             @csrf
             <button class="btn btn-info" onclick="return confirm ('Apakah Yakin Ingin logout ?')">Logout</button>
