@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\Datasiswa;
 Use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+Use Illuminate\Support\Facades\route;
 
 
 /*

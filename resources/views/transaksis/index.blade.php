@@ -7,6 +7,8 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('transaksis.create') }}"> Tambah Transaksi</a>
+                {{-- <a href="{{ route('generate.pdf') }}" target="_blank">Unduh Laporan PDF</a> --}}
+
             </div>
         </div>
     </div>

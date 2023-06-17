@@ -11,11 +11,7 @@ use DB;
 
 class TransaksiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $transaksis = Transaksi::latest()->paginate(5);
@@ -23,11 +19,6 @@ class TransaksiController extends Controller
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $nama_barang = barang::all();
@@ -35,15 +26,8 @@ class TransaksiController extends Controller
         return view('transaksis.create',compact('nama_barang','harga_barang'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-    // {
                 $find_barang = barang::where('nama_barang', $request->nama_barang)->first();
                 $total_harga = $request->stok  * $find_barang->harga_barang;
                 if ($request->stok <= $find_barang->stok) {
@@ -70,23 +54,12 @@ class TransaksiController extends Controller
             
             ->with('success','Transaksi Berhasil Ditambahkan.');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Transaksi  $transaksi
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Transaksi $transaksi)
     {
         return view('transaksis.show',compact('transaksi'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Transaksi  $transaksi
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Transaksi $transaksi)
     {
         $nama_barang = barang::all();
@@ -94,13 +67,6 @@ class TransaksiController extends Controller
         return view('transaksis.edit',compact('transaksi','nama_barang', 'harga_barang'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Transaksi  $transaksi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Transaksi $transaksi)
     {
         
@@ -129,12 +95,7 @@ class TransaksiController extends Controller
             
             ->with('success','Transaksi updated successfully');
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Transaksi  $transaksi
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Transaksi $transaksi)
     {
         $cek = transaksi::find($transaksi)->first();
