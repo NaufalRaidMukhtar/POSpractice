@@ -24,12 +24,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                    <a class="btn btn-info" href="mereks">Merek <span class="merek"></a>
-                    <a class="btn btn-info" href="distributors">Distributor<span class="distributor"></a>
-                    <a class="btn btn-info" href="barangs">Barang<span class="barang"></a>
-                    <a class="btn btn-info" href="transaksis">Transaksi<span class="transaksi"></a>
-            </ul>
+        <ul class = "navbar-nav ms-auto">
+            @if (auth()->user()->type == '1' )
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/mereks">Merek <span class="merek"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/distributors">Distributor<span class="distributor"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/barangs">Barang<span class="barang"></a>
+                </li>                        
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/transaksis">Transaksi<span class="transaksi"></a>
+                </li>                        
+            @endif
+        </ul>
             {{-- <ul class = "navbar-nav ms-auto">
                 <li calss="navbar-item">
                    <a href="login" class="nav-link"> <i class="bi bi-box-arrow-in-right"></i>

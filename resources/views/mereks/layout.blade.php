@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -34,15 +35,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                    <a class="btn btn-info" href="mereks">Merek <span class="merek"></a>
-                    <a class="btn btn-info" href="distributors">Distributor<span class="distributor"></a>
-                    <a class="btn btn-info" href="barangs">Barang<span class="barang"></a>
-                    <a class="btn btn-info" href="transaksis">Transaksi<span class="transaksi"></a>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/mereks">Merek <span class="merek"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/distributors">Distributor<span class="distributor"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/barangs">Barang<span class="barang"></a>
+                </li>                        
+                <li class="nav-item">
+                    <a class="btn btn-info" href="/transaksis">Transaksi<span class="transaksi"></a>
+                </li>  
             </ul>
         </div>
         <form action="/logout" method="POST">
             @csrf
-            <button class="btn btn-info" onclick="return confirm ('Apakah Yakin Ingin logout ?')">Logout</button>
+            <button class="btn btn-info"  onclick="return confirm ('Apakah Yakin Ingin logout ?')"> <i class="bi bi-box-arrow-right"></i></button>
             
         </form>
     </nav>

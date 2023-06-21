@@ -5,8 +5,10 @@
             <div class="pull-left">
                 <h2>Distributor</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('distributors.create') }}"> Tambah Distributor</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.print();" class="btn btn-primary"><i class="bi bi-download"></i> print data </button>
+                .
+                <a class="btn btn-success" href="{{ route('distributors.create') }}"> Tambah distributors</a>
             </div>
         </div>
     </div>
@@ -22,7 +24,7 @@
             <th>Nama Distributor</th>
             <th>Alamat</th>
             <th>No.telp</th>
-            <th width="280px">Action</th>
+            <th width="280px"></th>
         </tr>
         @foreach ($distributors as $distributor)
             <tr>
@@ -33,12 +35,12 @@
 
                 <td>
                     <form action="{{ route('distributors.destroy', $distributor->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('distributors.show', $distributor->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('distributors.edit', $distributor->id) }}">Edit</a>
+                        <a class="btn btn-info" href="{{ route('distributors.show', $distributor->id) }}"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-primary" href="{{ route('distributors.edit', $distributor->id) }}"><i class="bi bi-pencil-square"></i></a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Apakah yakin Ingin Menghapus {{ $distributor->nama_distributor }} ?')">Delete</button>
+                            onclick="return confirm('Apakah yakin Ingin Menghapus {{ $distributor->nama_distributor }} ?')"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

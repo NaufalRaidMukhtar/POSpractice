@@ -11,18 +11,12 @@ use App\Models\Datasiswa;
 Use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\route;
+use App\Http\Controllers\PDFController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
+
 
 
 //route POINT OF SALES
@@ -32,7 +26,14 @@ Route::resource('distributors', DistributorController::class);
 Route::resource('barangs', BarangController::class);
 Route::resource('transaksis', TransaksiController::class);
 
+// untuk multi auth
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+// untuk PDF
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('/', function () {
+    return view('welcome');
+});

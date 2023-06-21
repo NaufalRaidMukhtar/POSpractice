@@ -22,6 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
         </div>
         <form action="/logout" method="POST">
             @csrf
-            <button class="btn btn-info" onclick="return confirm ('Apakah Yakin Ingin logout ?')">Logout</button>
+            <button class="btn btn-info"  onclick="return confirm ('Apakah Yakin Ingin logout ?')"> <i class="bi bi-box-arrow-right"></i></button>
 
         </form>
     </nav>

@@ -3,15 +3,39 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
+            <br>
                 <h2>Transaksi</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('transaksis.create') }}"> Tambah Transaksi</a>
-                {{-- <a href="{{ route('generate.pdf') }}" target="_blank">Unduh Laporan PDF</a> --}}
-
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.print();" class="btn btn-primary"><i class="bi bi-download"></i> print data </button>
+                .
+                <a class="btn btn-success" href="{{ route('transaksis.create') }}"> Tambah Transaksi </a>
+                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">tambah transaksi</button> --}}
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Tambah</button>
+        </div>
+        </div>
+    </div>
+    </div> --}}
+
+    <br>
     <br>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -28,7 +52,7 @@
             <th>Total Bayar</th>
             <th>Kembalian</th>
             <th>Tanggal Beli</th>
-            <th width="280px">Action</th>
+            <th width="280px"></th>
         </tr>
         @foreach ($transaksis as $transaksi)
             <tr>
@@ -42,12 +66,12 @@
                 <td>{{ $transaksi->tanggal_beli }}</td>
                 <td>
                     <form action="{{ route('transaksis.destroy', $transaksi->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('transaksis.show', $transaksi->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('transaksis.edit', $transaksi->id) }}">Edit</a>   
+                        <a class="btn btn-info" href="{{ route('transaksis.show', $transaksi->id) }}"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-primary" href="{{ route('transaksis.edit', $transaksi->id) }}"><i class="bi bi-pencil-square"></i></a>   
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Apakah Yakin Ingin Menghapus  {{ $transaksi->nama_barang }} ?')">Delete</button>
+                            onclick="return confirm('Apakah Yakin Ingin Menghapus  {{ $transaksi->nama_barang }} ?')"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

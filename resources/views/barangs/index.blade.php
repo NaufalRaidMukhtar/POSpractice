@@ -6,16 +6,20 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
+            <br>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Barang</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('barangs.create') }}"> Tambah Barang</a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button onclick="window.print();" class="btn btn-primary"><i class="bi bi-download"></i> print data </button>
+                .
+                <a class="btn btn-success" href="{{ route('barangs.create') }}"> Tambah barang</a>
             </div>
         </div>
     </div>
+    <br>
     <br>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -33,7 +37,7 @@
             <th>Stok</th>
             <th>Tgl Masuk</th>
             <th>Nama Petugas</th>
-            <th width="280px">Action</th>
+            <th width="280px"></th>
         </tr>
         @foreach ($barangs as $barang)
             <tr>
@@ -48,12 +52,12 @@
                 <td>{{ $barang->nama_petugas}}</td>
                 <td>
                     <form action="{{ route('barangs.destroy', $barang->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('barangs.show', $barang->id) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('barangs.edit', $barang->id) }}">Edit</a>
+                        <a class="btn btn-info" href="{{ route('barangs.show', $barang->id) }}"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-primary" href="{{ route('barangs.edit', $barang->id) }}"><i class="bi bi-pencil-square"></i></a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Apakah Yakin Ingin Menghapus {{ $barang->nama_barang }} ?')">Delete</button>
+                            onclick="return confirm('Apakah Yakin Ingin Menghapus {{ $barang->nama_barang }} ?')"><i class="bi bi-trash"></i></button>
                     </form>
                 </td>
             </tr>

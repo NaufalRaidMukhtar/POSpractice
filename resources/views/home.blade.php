@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     HISTORY
-                    </div>
+                </div>
             </div>
         </div>
     </div>
